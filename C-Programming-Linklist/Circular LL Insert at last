@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+
+void Traversal(struct node *head){
+    struct node *p=head;
+    do{
+        printf("Element: %d\n",p->data);
+        p=p->next;
+    }while(p!=head);
+}
+
+struct node *insertAtlast(struct node *head,int data){
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    struct node *p=head->next;
+    ptr->data=data;
+    while(p->next!=head){
+        p=p->next;
+    }
+    p->next=ptr;
+    ptr->next=head;
+    return head;
+}
+
+int main(){
+    struct node *head;
+    struct node *first;
+    struct node *second;
+    struct node *third;
+
+    first=(struct node*)malloc(sizeof(struct node));
+    second=(struct node*)malloc(sizeof(struct node));
+    third=(struct node*)malloc(sizeof(struct node));
+
+    head=first;
+
+    first->data=60;
+    first->next=second;
+
+    second->data=70;
+    second->next=third;
+
+    third->data=80;
+    third->next=head;
+    printf("actual Elements\n");
+    Traversal(head);
+    head=insertAtlast(head,99);
+    printf("After insertion\n");
+    Traversal(head);
+    return 0;
+}

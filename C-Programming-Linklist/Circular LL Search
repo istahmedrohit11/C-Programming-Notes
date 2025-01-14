@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+
+void Traversal(struct node *head){
+    struct node *p=head;
+    do{
+        printf("Element: %d\n",p->data);
+        p=p->next;
+    }while(p!=head);
+}
+
+void search(struct node *head,int value){
+    struct node *p = head;
+    do{
+        if (p->data == value){
+            printf("Element found");
+            return;
+        }
+        p = p->next;
+    }while (p!=head);
+    printf("Element not found");
+}
+
+int main(){
+    struct node *head;
+    struct node *first;
+    struct node *second;
+    struct node *third;
+
+    first=(struct node*)malloc(sizeof(struct node));
+    second=(struct node*)malloc(sizeof(struct node));
+    third=(struct node*)malloc(sizeof(struct node));
+
+    head=first;
+
+    first->data=60;
+    first->next=second;
+
+    second->data=70;
+    second->next=third;
+
+    third->data=80;
+    third->next=head;
+    printf("actual Elements\n");
+    Traversal(head);
+    // head=insertAtlast(head,90);
+    
+    search(head,60);
+    return 0;
+}

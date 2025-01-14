@@ -1,0 +1,96 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+
+void linked_List_Traverse(struct node *newnode){
+    while(newnode!=NULL){
+        printf("Element:%d\n",newnode->data);
+        newnode=newnode->next;
+    }
+}
+
+// struct node *Insert_At_first(struct node*head,int data){
+//     struct node *ptr;
+//     ptr=(struct node*)malloc(sizeof(struct node));
+//     ptr->data=data;
+//     ptr->next=head;
+//     return ptr;
+// }
+
+// struct node *Insert_At_index(struct node*head,int data,int index){
+//     struct node *ptr;
+//     ptr=(struct node*)malloc(sizeof(struct node));
+//     struct node *p=head;
+//     int i=0;
+//     while(i!=index-1){
+//         p=p->next;
+//         i++;
+//     }
+//      if(p==NULL) {
+//         printf("wrong index\n");
+//         return head;
+//     }
+//     ptr->data=data;
+//     ptr->next=p->next;
+//     p->next=ptr;
+//     return head;
+// }
+
+struct node *Insert_At_end(struct node *head,int data){
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    struct node *p=head;
+    while(p->next!=NULL){
+        p=p->next;
+    }
+    ptr->data=data;
+    p->next=ptr;
+    ptr->next=NULL;
+    return head;
+}
+
+int main(){
+    struct node *head;
+    struct node *first;
+    struct node *second;
+    struct node *third;
+
+    first=(struct node*)malloc(sizeof(struct node));
+    second=(struct node*)malloc(sizeof(struct node));
+    third=(struct node*)malloc(sizeof(struct node));
+
+
+    first->data=66;
+    first->next=second;
+
+    second->data=77;
+    second->next=third;
+
+    third->data=88;
+    third->next=NULL;
+    head=first;
+    printf("Before Insertion:\n");
+    linked_List_Traverse(head);
+
+    // printf("Insert at first Insertion:\n");
+    // head=Insert_At_first(head,55);
+    // linked_List_Traverse(head);
+
+    // int index,data;
+    // printf("which index you want to insert: ");
+    // scanf("%d",&index);
+    // printf("Enter data:");
+    // scanf("%d",&data);
+    // printf("Inserting %d at index %d\n",data,index);
+    // head=Insert_At_index(head,data,index);
+    // linked_List_Traverse(head);
+
+    int data;
+    printf("Enter data:");
+    scanf("%d",&data);
+    head=Insert_At_end(head,data);
+    printf("Insert at Last:\n");
+    linked_List_Traverse(head);
+}

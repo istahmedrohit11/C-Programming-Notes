@@ -1,0 +1,24 @@
+/*#include<stdio.h>
+int main(){
+    FILE *fptr;
+    fptr=fopen("Test.txt","r");
+    char ch;
+    fscanf(fptr,"%c\n",&ch);
+    printf("%c",ch);
+    fclose(fptr);
+    return 0;
+}
+*/
+#include<stdio.h>
+int main(){
+    FILE *fptr;
+    fptr=fopen("Test.txt","r");
+    int ch;
+    fscanf(fptr,"%d\n",&ch);
+    printf("%d\n",ch);
+    fscanf(fptr,"%d\n",&ch);
+    printf("%d\n",ch);
+    fclose(fptr);
+    return 0;
+}
+// output 123 143

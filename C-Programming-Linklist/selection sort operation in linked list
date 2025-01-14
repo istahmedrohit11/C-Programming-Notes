@@ -1,0 +1,62 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+void linked_List_Traverse(struct node *head){
+    struct node *p=head;
+    while(p!=NULL){
+        printf("%d\t",p->data);
+        p=p->next;
+    }
+}
+void Selection_sort(struct node *head){
+    struct node *p=head;
+    struct node *q;
+    int temp;
+    while(p!=NULL){
+        q=p->next;
+        while(q!=NULL){
+            if(p->data < q->data){
+                temp=q->data;
+                q->data=p->data;
+                p->data=temp;
+            }
+            q=q->next;
+        }
+        p=p->next;
+    } 
+}
+
+int main(){
+    struct node *head;
+    struct node *first;
+    struct node *second;
+    struct node *third;
+    struct node *fourth;
+    struct node *fifth;
+    struct node *sixth;
+    
+    first=(struct node*)malloc(sizeof(struct node));
+    second=(struct node*)malloc(sizeof(struct node));
+    third=(struct node*)malloc(sizeof(struct node));
+    fourth=(struct node*)malloc(sizeof(struct node));
+    fifth=(struct node*)malloc(sizeof(struct node));
+    sixth=(struct node*)malloc(sizeof(struct node));
+
+    first->data=55;first->next=second;
+    second->data=99;second->next=third;
+    third->data=110;third->next=fourth;
+    fourth->data=88;fourth->next=fifth;
+    fifth->data=23;fifth->next=sixth;
+    sixth->data=77;sixth->next=NULL;
+    head = first;
+
+    printf("Linked list before sorting:\n");
+    linked_List_Traverse(head);
+    Selection_sort(head);
+    printf("\nSorting in Descending order:\n");
+    linked_List_Traverse(head);
+    return 0;
+}

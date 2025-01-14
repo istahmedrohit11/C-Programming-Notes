@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+
+void Traversal(struct node *p){
+    while(p!=NULL){
+        printf("Element:%d\n",p->data);
+        p=p->next;
+    }
+}
+struct node *delete_last(struct node *head){
+    struct node *p=head;
+    struct node *q=head->next;
+    while(q->next!=NULL){
+        p=p->next;
+        q=q->next;
+    }
+    p->next=NULL;
+    free(q);
+    return head;
+}
+
+int main(){
+    struct node *head;
+    struct node *first;
+    struct node *second;
+    struct node *third;
+    struct node *fourth;
+
+    first=(struct node*)malloc(sizeof(struct node));
+    second=(struct node*)malloc(sizeof(struct node));
+    third=(struct node*)malloc(sizeof(struct node));
+    fourth=(struct node*)malloc(sizeof(struct node));
+
+    first->data= 50;
+    first->next=second;
+
+    second->data=60;
+    second->next=third;
+
+    third->data=70;
+    third->next=fourth;
+
+    fourth->data=80;
+    fourth->next=NULL;
+
+    head=first;
+    head=delete_last(head);
+    Traversal(head);
+    return 0;
+}
+

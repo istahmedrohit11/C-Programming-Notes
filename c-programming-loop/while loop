@@ -1,0 +1,12 @@
+#include <stdio.h>
+int main() {
+    int n;
+    printf("How many numbers do you want: ");
+    scanf("%d", &n);  // Reading user input in C
+    int count = 1;
+    while(count <= n) {
+        printf("%d ", count);  // Printing numbers in C
+        count++;
+    }
+    return 0;
+}

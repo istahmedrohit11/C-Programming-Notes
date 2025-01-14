@@ -1,0 +1,113 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+
+void traversal(struct node *newNode){
+    while(newNode!=NULL){
+        printf("Element:%d\n",newNode->data);
+        newNode=newNode->next;
+    }
+}
+
+// struct node *Insert_at_first(struct node *head,int data){
+//     struct node *ptr=(struct node*)malloc(sizeof(struct node));
+//     ptr->data=data;
+//     ptr->next=head; 
+//     return ptr;
+// }
+
+// struct node *insert_at_last(struct node *head,int data){
+//     struct node *ptr=(struct node*)malloc(sizeof(struct node));
+//     struct node *p=head;
+//     ptr->data=data;
+//     while(p->next!=NULL){
+//         p=p->next;
+//     }
+//     p->next=ptr;
+//     ptr->next=NULL;
+//     return head;
+// }
+
+// struct node *Delate_at_first(struct node *head){
+//     struct node *ptr=head;
+//     head=head->next;
+//     free(ptr);
+//     return head;
+// }
+
+
+// struct node *Delate_at_last(struct node *head){
+//     struct node *p=head;
+//     struct node *q=head->next;
+//     while(q->next!=NULL){
+//         p=p->next;
+//         q=q->next;
+//     }
+//     p->next=NULL;
+//     free(q);
+//     return head;
+// }
+
+void Search_in_linkedlist(struct node *head,int value){
+    struct node *p=head;
+    while(p!=NULL){
+        if(p->data==value){
+            printf("%d is found ",value);
+            return;
+        }
+        p=p->next;
+    }
+    printf("%d is not found",value);
+}
+
+int main(){
+    struct node *head;
+    struct node *first;
+    struct node *second;
+    struct node *third;
+    struct node *fourth;
+
+    first=(struct node*)malloc(sizeof(struct node));
+    second=(struct node*)malloc(sizeof(struct node));
+    third=(struct node*)malloc(sizeof(struct node));
+    fourth=(struct node*)malloc(sizeof(struct node));
+
+    first->data= 50;
+    first->next=second;
+
+    second->data=60;
+    second->next=third;
+
+    third->data=70;
+    third->next=fourth;
+
+    fourth->data=80;
+    fourth->next=NULL;
+
+    head=first;
+    printf("Main Elements:\n");
+    traversal(head);
+
+    // head=Insert_at_first(head,40);
+    // printf("after insert\n");
+    // traversal(head);
+
+    // head=insert_at_last(head,90);
+    // printf("after insert\n");
+    // traversal(head);
+
+    // head=Delate_at_first(head);
+    // printf("after delate\n");
+    // traversal(head);
+
+    // head=Delate_at_last(head);
+    // printf("after delate\n");
+    // traversal(head);
+
+    // Search_in_linkedlist(head,90);
+    return 0;
+}
+
